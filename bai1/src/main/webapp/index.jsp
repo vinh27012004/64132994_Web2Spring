@@ -124,25 +124,25 @@
     <p class="subtitle">Chọn một bài tập để bắt đầu</p>
     
     <div class="menu">
-        <a href="${pageContext.request.contextPath}/BAITH1_1/testDoGet" class="menu-item item1">
+        <a href="/BAITH1_1/testDoGet" class="menu-item item1">
             <div class="menu-item-icon">📤</div>
             <div class="menu-item-title">BAITH1_1</div>
             <div class="menu-item-desc">Test DoGet</div>
         </a>
         
-        <a href="${pageContext.request.contextPath}/BAITH1_2/testDoPost" class="menu-item item2">
+        <a href="/BAITH1_2/testDoPost" class="menu-item item2">
             <div class="menu-item-icon">📝</div>
             <div class="menu-item-title">BAITH1_2</div>
             <div class="menu-item-desc">Test DoPost</div>
         </a>
         
-        <a href="${pageContext.request.contextPath}/BAITH1_3/AboutMe" class="menu-item item3">
+        <a href="/BAITH1_3/AboutMe" class="menu-item item3">
             <div class="menu-item-icon">👤</div>
             <div class="menu-item-title">BAITH1_3</div>
             <div class="menu-item-desc">About Me</div>
         </a>
         
-        <a href="${pageContext.request.contextPath}/BAITH1_4/BMI" class="menu-item item4">
+        <a href="/BAITH1_4/BMI" class="menu-item item4">
             <div class="menu-item-icon">🏃‍♂️</div>
             <div class="menu-item-title">BAITH1_4</div>
             <div class="menu-item-desc">BMI Calculator</div>
