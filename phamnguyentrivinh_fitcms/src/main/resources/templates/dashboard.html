@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMS Dashboard</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #ffffff;
+            color: #111;
+            padding: 6px;
+        }
+
+        .frame {
+            border: 1px solid #777;
+            min-height: calc(100vh - 12px);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .topbar {
+            height: 68px;
+            border-bottom: 1px solid #777;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f3f3f3;
+        }
+
+        .logo-wrap {
+            width: 210px;
+            height: 100%;
+            border-right: 1px solid #777;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px;
+        }
+
+        .logo {
+            max-width: 100%;
+            max-height: 52px;
+            display: block;
+        }
+
+        .user {
+            padding: 0 12px;
+            font-size: 35px;
+        }
+
+        .main {
+            display: flex;
+            flex: 1;
+        }
+
+        .sidebar {
+            width: 210px;
+            border-right: 1px solid #777;
+            padding: 10px;
+            background: #f7f7f7;
+        }
+
+        .brand {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .menu {
+            list-style: none;
+            border: 1px solid #777;
+            background: #fff;
+        }
+
+        .menu li {
+            border-bottom: 1px solid #777;
+        }
+
+        .menu li:last-child {
+            border-bottom: none;
+        }
+
+        .menu a {
+            display: block;
+            text-decoration: none;
+            color: #111;
+            padding: 6px 8px;
+            font-size: 35px;
+        }
+
+        .menu a.active {
+            font-weight: bold;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 43px;
+        }
+
+        .footer {
+            border-top: 1px solid #777;
+            text-align: center;
+            padding: 6px 8px;
+            font-size: 19px;
+            background: #f3f3f3;
+        }
+
+
+        @media (max-width: 768px) {
+            .main {
+                flex-direction: column;
+            }
+
+            .logo-wrap,
+            .sidebar {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid #777;
+            }
+
+            .topbar {
+                height: auto;
+                flex-direction: column;
+            }
+
+            .user {
+                width: 100%;
+                text-align: right;
+                font-size: 26px;
+                padding: 6px 10px;
+            }
+
+            .menu a,
+            .brand,
+            .content {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="frame">
+        <header class="topbar">
+            <div class="logo-wrap">
+                <img class="logo" src="image\Screenshot 2026-03-11 151124.png" alt="Logo khoa CNTT NTU">
+            </div>
+            <div class="user">[UserName]</div>
+        </header>
+
+        <div class="main">
+            <aside class="sidebar">
+                <div class="brand">Dashboard</div>
+                <ul class="menu">
+                    <li><a href="#">Page -List</a></li>
+                    <li><a href="#">Page -Addnew</a></li>
+                    <li><a href="#">Post -List</a></li>
+                    <li><a href="#">Post -Addnew</a></li>
+                </ul>
+            </aside>
+
+            <main class="content">Content</main>
+        </div>
+
+        <footer class="footer">&copy;2025 by Student Name - FIT.NTU</footer>
+    </div>
+</body>
+</html>
