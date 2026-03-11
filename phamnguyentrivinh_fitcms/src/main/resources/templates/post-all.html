@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post List</title>
+</head>
+<body>
+    <h1>Danh sach Post</h1>
+    <ul>
+        <li th:each="p : ${dsBaiViet}" th:text="${p.title}">Bai viet mau</li>
+    </ul>
+    <p><a th:href="@{/dashboard}" href="/dashboard">Quay lai Dashboard</a></p>
+</body>
+</html>

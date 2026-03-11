@@ -101,10 +101,15 @@
 
         .content {
             flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 43px;
+            padding: 8px;
+        }
+
+        .content-frame {
+            width: 100%;
+            height: 100%;
+            min-height: 420px;
+            border: 1px solid #777;
+            background: #fff;
         }
 
         .footer {
@@ -152,26 +157,28 @@
     <div class="frame">
         <header class="topbar">
             <div class="logo-wrap">
-                <img class="logo" src="image\Screenshot 2026-03-11 151124.png" alt="Logo khoa CNTT NTU">
+                <img class="logo" th:src="@{/image/Screenshot 2026-03-11 151124.png}" src="/image/Screenshot%202026-03-11%20151124.png" alt="Logo khoa CNTT NTU">
             </div>
-            <div class="user">[UserName]</div>
+            <div class="user">[PhamNguyenTriVinh</div>
         </header>
 
         <div class="main">
             <aside class="sidebar">
                 <div class="brand">Dashboard</div>
                 <ul class="menu">
-                    <li><a href="#">Page -List</a></li>
-                    <li><a href="#">Page -Addnew</a></li>
-                    <li><a href="#">Post -List</a></li>
-                    <li><a href="#">Post -Addnew</a></li>
+                    <li><a th:href="@{/page/all}" href="/page/all" target="contentFrame">Page -List</a></li>
+                    <li><a th:href="@{/page/addnew}" href="/page/addnew" target="contentFrame">Page -Addnew</a></li>
+                    <li><a th:href="@{/post/all}" href="/post/all" target="contentFrame">Post -List</a></li>
+                    <li><a th:href="@{/post/addnew}" href="/post/addnew" target="contentFrame">Post -Addnew</a></li>
                 </ul>
             </aside>
 
-            <main class="content">Content</main>
+            <main class="content">
+                <iframe class="content-frame" name="contentFrame" th:src="@{/page/all}" src="/page/all" title="Content"></iframe>
+            </main>
         </div>
 
-        <footer class="footer">&copy;2025 by Student Name - FIT.NTU</footer>
+        <footer class="footer">&copy;2025 by PhamNguyenTriVinh - FIT.NTU</footer>
     </div>
 </body>
 </html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page List</title>
+</head>
+<body>
+    <h1>Danh sach Page</h1>
+    <table border="1" cellpadding="6" cellspacing="0">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>pageName</th>
+                <th>parentPageId</th>
+                <th>thao tac</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="p : ${dsTrang}">
+                <td th:text="${p.id}">1</td>
+                <td th:text="${p.pageName}">Trang chu</td>
+                <td th:text="${p.parentPageId}">0</td>
+                <td>
+                    <a th:href="@{'/page/view/' + ${p.id}}" href="#">view</a>
+                    |
+                    <a th:href="@{'/page/new?id=' + ${p.id}}" href="#">edit</a>
+                    |
+                    <a th:href="@{'/page/delete/' + ${p.id}}" href="#">delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p><a th:href="@{/page/new}" href="/page/new">Them Page Moi</a></p>
+    <p><a th:href="@{/dashboard}" href="/dashboard">Quay lai Dashboard</a></p>
+</body>
+</html>

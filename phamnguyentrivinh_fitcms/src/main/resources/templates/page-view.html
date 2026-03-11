@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page View</title>
+</head>
+<body>
+    <h1>Chi tiet Page</h1>
+    <p><strong>Id:</strong> <span th:text="${page.id}">1</span></p>
+    <p><strong>Page Name:</strong> <span th:text="${page.pageName}">Trang chu</span></p>
+    <p><strong>Keyword:</strong> <span th:text="${page.keyword}">trang-chu</span></p>
+    <p><strong>Parent Page Id:</strong> <span th:text="${page.parentPageId}">0</span></p>
+    <p><strong>Content:</strong> <span th:text="${page.content}">Noi dung</span></p>
+
+    <p><a th:href="@{/page/all}" href="/page/all">Quay lai danh sach Page</a></p>
+    <p><a th:href="@{/dashboard}" href="/dashboard">Quay lai Dashboard</a></p>
+</body>
+</html>
