@@ -4,34 +4,101 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page List</title>
+    <style>
+        :root {
+            --line: #d3dde7;
+            --text: #1f2a37;
+            --bg: #f7faff;
+            --head: #eef4fb;
+            --accent: #1f6feb;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 18px;
+        }
+
+        h1 {
+            margin: 0 0 14px 0;
+            font-size: 24px;
+        }
+
+        .card {
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border-bottom: 1px solid var(--line);
+            padding: 10px 12px;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        th {
+            background: var(--head);
+            font-weight: 600;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .actions {
+            margin-top: 14px;
+            display: flex;
+            gap: 14px;
+        }
+    </style>
 </head>
 <body>
     <h1>Danh sach Page</h1>
-    <table border="1" cellpadding="6" cellspacing="0">
-        <thead>
-            <tr>
-                <th>id</th>
-                <th>pageName</th>
-                <th>parentPageId</th>
-                <th>thao tac</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="p : ${dsTrang}">
-                <td th:text="${p.id}">1</td>
-                <td th:text="${p.pageName}">Trang chu</td>
-                <td th:text="${p.parentPageId}">0</td>
-                <td>
-                    <a th:href="@{'/page/view/' + ${p.id}}" href="#">view</a>
-                    |
-                    <a th:href="@{'/page/new?id=' + ${p.id}}" href="#">edit</a>
-                    |
-                    <a th:href="@{'/page/delete/' + ${p.id}}" href="#">delete</a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <p><a th:href="@{/page/new}" href="/page/new">Them Page Moi</a></p>
-    <p><a th:href="@{/dashboard}" href="/dashboard">Quay lai Dashboard</a></p>
+    <div class="card">
+        <table>
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>pageName</th>
+                    <th>parentPageId</th>
+                    <th>thao tac</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="p : ${dsTrang}">
+                    <td th:text="${p.id}">1</td>
+                    <td th:text="${p.pageName}">Trang chu</td>
+                    <td th:text="${p.parentPageId}">0</td>
+                    <td>
+                        <a th:href="@{'/page/view/' + ${p.id}}" href="#">view</a>
+                        |
+                        <a th:href="@{'/page/new?id=' + ${p.id}}" href="#">edit</a>
+                        |
+                        <a th:href="@{'/page/delete/' + ${p.id}}" href="#">delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="actions">
+        <a th:href="@{/page/new}" href="/page/new">Them Page Moi</a>
+        <a th:href="@{/dashboard}" href="/dashboard">Quay lai Dashboard</a>
+    </div>
 </body>
 </html>

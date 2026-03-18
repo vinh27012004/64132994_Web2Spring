@@ -4,31 +4,105 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page Add New</title>
+    <style>
+        :root {
+            --line: #d3dde7;
+            --text: #1f2a37;
+            --bg: #f7faff;
+            --accent: #1f6feb;
+        }
+
+        body {
+            margin: 0;
+            padding: 18px;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        h1 {
+            margin: 0 0 14px 0;
+            font-size: 24px;
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            padding: 16px;
+            max-width: 680px;
+        }
+
+        .field {
+            margin-bottom: 12px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 8px 10px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            font: inherit;
+        }
+
+        button {
+            border: 1px solid var(--accent);
+            background: var(--accent);
+            color: #fff;
+            padding: 8px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .actions {
+            margin-top: 14px;
+            display: flex;
+            gap: 14px;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+    </style>
 </head>
 <body>
     <h1>Them Page Moi</h1>
+    <div class="card">
     <form th:action="@{/page/new}" action="/page/new" method="post">
-        <p>
+        <div class="field">
             <label for="pageName">Page Name:</label>
             <input id="pageName" name="pageName" type="text" required>
-        </p>
-        <p>
+        </div>
+        <div class="field">
             <label for="keyword">Keyword:</label>
             <input id="keyword" name="keyword" type="text">
-        </p>
-        <p>
-            <label for="parentPageId">Parent Page Id:</label>
+        </div>
+        <div class="field">
+            <label for="parentPageId">Page Id:</label>
             <input id="parentPageId" name="parentPageId" type="number" value="0">
-        </p>
-        <p>
+        </div>
+        <div class="field">
             <label for="content">Content:</label>
             <textarea id="content" name="content" rows="4" cols="40"></textarea>
-        </p>
+        </div>
         <p>
             <button type="submit">Luu</button>
         </p>
     </form>
-    <p><a th:href="@{/page/all}" href="/page/all">Xem danh sach Page</a></p>
-    <p><a th:href="@{/dashboard}" href="/dashboard">Quay lai Dashboard</a></p>
+    </div>
+    <div class="actions">
+        <a th:href="@{/page/all}" href="/page/all">Xem danh sach Page</a>
+        <a th:href="@{/dashboard}" href="/dashboard">Quay lai Dashboard</a>
+    </div>
 </body>
 </html>

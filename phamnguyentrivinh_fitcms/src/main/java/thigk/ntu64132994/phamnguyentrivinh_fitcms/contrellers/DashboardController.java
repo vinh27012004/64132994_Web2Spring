@@ -89,8 +89,44 @@ public class DashboardController {
         return "post-all";
     }
 
-    @GetMapping("/post/addnew")
+    @GetMapping({"/post/addnew", "/post/new"})
     public String postAddNew() {
         return "post-addnew";
+    }
+
+    @PostMapping({"/post/addnew", "/post/new"})
+    public String postCreate(
+            @RequestParam("title") String title,
+            @RequestParam(value = "content", required = false, defaultValue = "") String content,
+            @RequestParam(value = "categoryId", required = false, defaultValue = "0") int categoryId) {
+
+        int newId = dsBaiViet.stream()
+                .map(Post::getId)
+                .max(Comparator.naturalOrder())
+                .orElse(0) + 1;
+
+        dsBaiViet.add(new Post(newId, title, content, categoryId));
+        return "redirect:/post/all";
+    }
+
+    @GetMapping("/post/view/{id}")
+    public String postView(@PathVariable("id") int id, ModelMap m) {
+        Post post = dsBaiViet.stream()
+                .filter(p -> p.getId() == id)
+                .findFirst()
+                .orElse(null);
+
+        if (post == null) {
+            return "redirect:/post/all";
+        }
+
+        m.addAttribute("post", post);
+        return "post-view";
+    }
+
+    @GetMapping("/post/delete/{id}")
+    public String postDelete(@PathVariable("id") int id) {
+        dsBaiViet.removeIf(p -> p.getId() == id);
+        return "redirect:/post/all";
     }
 }

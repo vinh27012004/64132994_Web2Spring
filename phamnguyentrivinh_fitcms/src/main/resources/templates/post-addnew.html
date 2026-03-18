@@ -4,10 +4,101 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Post Add New</title>
+    <style>
+        :root {
+            --line: #d3dde7;
+            --text: #1f2a37;
+            --bg: #f7faff;
+            --accent: #1f6feb;
+        }
+
+        body {
+            margin: 0;
+            padding: 18px;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        h1 {
+            margin: 0 0 14px 0;
+            font-size: 24px;
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            padding: 16px;
+            max-width: 680px;
+        }
+
+        .field {
+            margin-bottom: 12px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 8px 10px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            font: inherit;
+        }
+
+        button {
+            border: 1px solid var(--accent);
+            background: var(--accent);
+            color: #fff;
+            padding: 8px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .actions {
+            margin-top: 14px;
+            display: flex;
+            gap: 14px;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+    </style>
 </head>
 <body>
     <h1>Them Post Moi</h1>
-    <p>Day la trang nhap lieu Post.</p>
-    <p><a th:href="@{/dashboard}" href="/dashboard">Quay lai Dashboard</a></p>
+    <div class="card">
+        <form th:action="@{/post/new}" action="/post/new" method="post">
+            <div class="field">
+                <label for="title">Title:</label>
+                <input id="title" name="title" type="text" required>
+            </div>
+            <div class="field">
+                <label for="categoryId">Post Id:</label>
+                <input id="categoryId" name="categoryId" type="number" value="0">
+            </div>
+            <div class="field">
+                <label for="content">Content:</label>
+                <textarea id="content" name="content" rows="5"></textarea>
+            </div>
+            <p>
+                <button type="submit">Luu</button>
+            </p>
+        </form>
+    </div>
+    <div class="actions">
+        <a th:href="@{/post/all}" href="/post/all">Xem danh sach Post</a>
+        <a th:href="@{/dashboard}" href="/dashboard">Quay lai Dashboard</a>
+    </div>
 </body>
 </html>
