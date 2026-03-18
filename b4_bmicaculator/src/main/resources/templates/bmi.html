@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Fraunces:opsz,wght@9..144,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/bmi.css}">
+</head>
+<body>
+<div class="bg-shape shape-a"></div>
+<div class="bg-shape shape-b"></div>
+
+<main class="layout">
+    <section class="hero">
+        <p class="eyebrow">HEALTH CHECK</p>
+        <h1>BMI Calculator</h1>
+        <p class="subtitle">
+            Nhap chieu cao va can nang de tinh BMI ngay.
+        </p>
+
+        <form class="bmi-form" th:action="@{/bmi}" method="post">
+            <label for="heightCm">Chieu cao (cm)</label>
+            <input id="heightCm" name="heightCm" type="number" min="100" max="250" step="0.1"
+                   th:value="${heightCm}" required>
+
+            <label for="weightKg">Can nang (kg)</label>
+            <input id="weightKg" name="weightKg" type="number" min="20" max="300" step="0.1"
+                   th:value="${weightKg}" required>
+
+            <button type="submit">Tinh BMI</button>
+        </form>
+
+        <p class="error" th:if="${error}" th:text="${error}"></p>
+    </section>
+
+    <section class="result-card" th:classappend="${resultClass}">
+        <p class="result-label">KET QUA</p>
+        <div class="bmi-number" th:text="${bmi != null ? bmi : '--.-'}">--.-</div>
+        <p class="category" th:text="${category != null ? category : 'Chua co du lieu'}">Chua co du lieu</p>
+        <p class="advice" th:text="${advice != null ? advice : 'Nhap thong tin o ben trai va bam Tinh BMI.'}">
+            Nhap thong tin o ben trai va bam Tinh BMI.
+        </p>
+
+        <ul class="ranges">
+            <li><span>Duoi 18.5</span><strong>Gay</strong></li>
+            <li><span>18.5 - 24.9</span><strong>Binh thuong</strong></li>
+            <li><span>25.0 - 29.9</span><strong>Thua can</strong></li>
+            <li><span>Tu 30</span><strong>Beo phi</strong></li>
+        </ul>
+    </section>
+</main>
+</body>
+</html>
