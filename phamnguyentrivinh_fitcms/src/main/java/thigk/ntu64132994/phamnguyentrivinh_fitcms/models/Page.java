@@ -1,13 +1,24 @@
 package thigk.ntu64132994.phamnguyentrivinh_fitcms.models;
 
-public class Page {
-    private int id;
-    private String pageName;
-    private String keyword;
-    private String content;
-    private int parentPageId;
-    private String thumbnailImage;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name = "pages")
+public class Page {
+    @Id
+    @Column(name = "id")
+    private int id;
+    @Column(name = "page_name")
+    private String pageName;
+    @Column(name = "keyword")
+    private String keyword;
+    @Column(name = "content")
+    private String content;
+    @Column(name = "parent_page_id")
+    private int parentPageId;
     public Page() {
     }
 
@@ -25,7 +36,6 @@ public class Page {
         this.keyword = keyword;
         this.content = content;
         this.parentPageId = parentPageId;
-        this.thumbnailImage = thumbnailImage;
     }
 
     public int getId() {
@@ -76,11 +86,4 @@ public class Page {
         this.parentPageId = parentPageId;
     }
 
-    public String getThumbnailImage() {
-        return thumbnailImage;
-    }
-
-    public void setThumbnailImage(String thumbnailImage) {
-        this.thumbnailImage = thumbnailImage;
-    }
 }

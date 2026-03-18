@@ -1,4 +1,4 @@
-package thigk.ntu64132994.phamnguyentrivinh_fitcms.contrellers;
+package thigk.ntu64132994.phamnguyentrivinh_fitcms.controllers;
 
 import java.util.ArrayList;
 import java.util.Comparator;
