@@ -1,8 +1,5 @@
 package thigk.ntu64132994.phamnguyentrivinh_fitcms.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-
 
 public class Post {
     private int id;
