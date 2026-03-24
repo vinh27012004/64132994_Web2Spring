@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bai 6 - Truyen danh sach</title>
+    <style>
+        body {
+            font-family: Tahoma, sans-serif;
+            margin: 32px;
+            line-height: 1.6;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 700px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background: #f3f3f3;
+        }
+    </style>
+</head>
+<body>
+<h1>Bai 6: Truyen danh sach tu Controller sang View</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>STT</th>
+        <th>Ma so</th>
+        <th>Ho ten</th>
+        <th>Email</th>
+        <th>Nam sinh</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="sv, state : ${danhSachSinhVien}">
+        <td th:text="${state.count}">1</td>
+        <td th:text="${sv.maSo}">SV001</td>
+        <td th:text="${sv.hoTen}">Nguyen Van A</td>
+        <td th:text="${sv.email}">a@ntu.edu.vn</td>
+        <td th:text="${sv.namSinh}">2004</td>
+    </tr>
+    </tbody>
+</table>
+
+<p><a th:href="@{/}">Quay ve trang chu</a></p>
+</body>
+</html>

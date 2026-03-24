@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bai 5 - Truyen doi tuong</title>
+    <style>
+        body {
+            font-family: Tahoma, sans-serif;
+            margin: 32px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+<h1>Bai 5: Truyen doi tuong tu Controller sang View</h1>
+
+<p><strong>Ma so:</strong> <span th:text="${sinhVien.maSo}">SV001</span></p>
+<p><strong>Ho ten:</strong> <span th:text="${sinhVien.hoTen}">Nguyen Van A</span></p>
+<p><strong>Email:</strong> <span th:text="${sinhVien.email}">a@ntu.edu.vn</span></p>
+<p><strong>Nam sinh:</strong> <span th:text="${sinhVien.namSinh}">2004</span></p>
+
+<p><a th:href="@{/}">Quay ve trang chu</a></p>
+</body>
+</html>
