@@ -1,4 +1,5 @@
 package ntu.vinh.b1_hellospring;
+package ntu.vinh.b1_hellospring;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
