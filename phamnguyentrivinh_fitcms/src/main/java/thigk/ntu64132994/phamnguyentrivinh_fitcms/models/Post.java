@@ -1,11 +1,23 @@
 package thigk.ntu64132994.phamnguyentrivinh_fitcms.models;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name = "post")
 public class Post {
+    @Id
+    @Column(name = "id")
     private int id;
+    @Column(name = "title")
     private String title;
+    @Column(name = "content")
     private String content;
+    @Column(name = "category_id")
     private int categoryId;
+    @Column(name = "thumbnail_image")
     private String thumbnailImage;
 
     public Post() {

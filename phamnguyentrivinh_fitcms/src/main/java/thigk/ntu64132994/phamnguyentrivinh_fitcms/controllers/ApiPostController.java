@@ -1,6 +1,4 @@
 package thigk.ntu64132994.phamnguyentrivinh_fitcms.controllers;
-import thigk.ntu64132994.phamnguyentrivinh_fitcms.models.Page;
-import thigk.ntu64132994.phamnguyentrivinh_fitcms.services.PageService;
 
 import java.util.List;
 
@@ -10,20 +8,23 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
+import thigk.ntu64132994.phamnguyentrivinh_fitcms.models.Post;
+import thigk.ntu64132994.phamnguyentrivinh_fitcms.services.PostService;
 
 @RestController
-@RequestMapping("/api/page")
-public class ApiPageController {
+@RequestMapping("/api/post")
+public class ApiPostController {
 
     @Autowired
-    private PageService pageService;
+    private PostService postService;
+
     @GetMapping("/all")
-    public List<Page> getAllPages() {
-        return pageService.getAllPages();
+    public List<Post> getAllPosts() {
+        return postService.getAllPosts();
     }
+
     @GetMapping("/{id}")
-    public Page getPageById(@PathVariable("id") int id) {
-        return pageService.getPageById(id);
+    public Post getPostById(@PathVariable("id") int id) {
+        return postService.getPostById(id);
     }
 }
