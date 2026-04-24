@@ -1,5 +1,4 @@
 package thigk1.phamnguyentrivinh.dethigiuaki_de2.entity;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.util.List;
