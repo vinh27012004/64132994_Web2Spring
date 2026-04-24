@@ -3,7 +3,7 @@ package thigk1.phamnguyentrivinh.dethigiuaki_de2.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "users")
+@Table(name = "user")
 public class User {
 
     @Id

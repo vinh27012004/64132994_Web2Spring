@@ -42,7 +42,7 @@ public class WebController {
             session.setAttribute("loggedInUser", user);
             return "redirect:/";
         } else {
-            model.appendAttribute("error", "Sai tên đăng nhập hoặc mật khẩu");
+            model.addAttribute("error", "Sai tên đăng nhập hoặc mật khẩu");
             return "login";
         }
     }
