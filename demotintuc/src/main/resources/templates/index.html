@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tin Tức NTU</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg main-navbar sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">Tin Tức <span class="accent">NTU</span></a>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/tintuc"><i class="bi bi-newspaper me-1"></i>Tất cả tin</a>
+                </li>
+                <li class="nav-item" th:each="loai : ${danhSachLoai}">
+                    <a class="nav-link" th:href="@{/tintuc(loaiId=${loai.id})}" th:text="${loai.tenLoai}"></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin" style="color: #e94560 !important;">
+                        <i class="bi bi-shield-lock me-1"></i>Admin
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero-section">
+    <div class="container text-center">
+        <h1><i class="bi bi-newspaper me-2"></i>Tin Tức Mới Nhất</h1>
+        <p class="lead mt-3">Cập nhật thông tin nhanh chóng, chính xác mỗi ngày</p>
+        <a href="/tintuc" class="btn btn-danger mt-3 px-4">
+            <i class="bi bi-arrow-right-circle me-2"></i>Xem tất cả tin tức
+        </a>
+    </div>
+</section>
+
+<!-- CONTENT -->
+<div class="container mt-5">
+    <div class="row">
+
+        <!-- MAIN: News Grid -->
+        <div class="col-lg-8">
+            <span class="section-title">
+                <i class="bi bi-fire me-2"></i>Tin Nổi Bật
+            </span>
+
+            <div th:if="${#lists.isEmpty(danhSachTinMoi)}" class="alert alert-info mt-3">
+                <i class="bi bi-info-circle me-2"></i>
+                Chưa có tin tức nào.
+                <a href="/admin/tintuc/them" class="alert-link">Thêm tin tức ngay →</a>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6" th:each="tin : ${danhSachTinMoi}">
+                    <div class="card news-card h-100">
+                        <div th:if="${tin.hinhAnh != null and !#strings.isEmpty(tin.hinhAnh)}">
+                            <img th:src="${tin.hinhAnh}" class="card-img-top" alt="Hình">
+                        </div>
+                        <div th:if="${tin.hinhAnh == null or #strings.isEmpty(tin.hinhAnh)}"
+                             class="no-img-placeholder">
+                            <i class="bi bi-image"></i>
+                        </div>
+                        <div class="card-body">
+                            <span class="badge-category mb-2 d-inline-block"
+                                  th:text="${tin.loaiTinTuc != null ? tin.loaiTinTuc.tenLoai : 'Chưa phân loại'}"></span>
+                            <h5 class="card-title mt-1" th:text="${tin.tieuDe}"></h5>
+                            <p class="card-text" th:text="${tin.tomTat}"></p>
+                        </div>
+                        <div class="card-footer d-flex justify-content-between align-items-center py-2 px-3">
+                            <small class="text-muted">
+                                <i class="bi bi-clock me-1"></i>
+                                <span th:text="${tin.ngayDang != null ? #temporals.format(tin.ngayDang, 'dd/MM/yyyy') : ''}"></span>
+                            </small>
+                            <a th:href="@{/tintuc/{id}(id=${tin.id})}"
+                               class="btn btn-sm btn-primary">Đọc thêm</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-4" th:if="${!#lists.isEmpty(danhSachTinMoi)}">
+                <a href="/tintuc" class="btn btn-outline-secondary px-5">
+                    <i class="bi bi-grid me-2"></i>Xem tất cả tin tức
+                </a>
+            </div>
+        </div>
+
+        <!-- SIDEBAR -->
+        <div class="col-lg-4 mt-4 mt-lg-0">
+            <!-- Categories -->
+            <div class="sidebar-widget card shadow-sm">
+                <div class="widget-header">
+                    <i class="bi bi-tags me-2"></i>Danh Mục Tin Tức
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <a href="/tintuc">
+                            <i class="bi bi-grid-3x3-gap text-primary"></i>
+                            <span>Tất cả</span>
+                        </a>
+                    </li>
+                    <li class="list-group-item" th:each="loai : ${danhSachLoai}">
+                        <a th:href="@{/tintuc(loaiId=${loai.id})}">
+                            <i class="bi bi-chevron-right text-danger"></i>
+                            <span th:text="${loai.tenLoai}"></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Quick Admin -->
+            <div class="card shadow-sm" style="border-radius:12px; overflow:hidden;">
+                <div class="card-body" style="background: linear-gradient(135deg, #e94560, #c0392b); color:white;">
+                    <h6 class="fw-bold mb-1"><i class="bi bi-shield-lock me-2"></i>Khu vực Admin</h6>
+                    <p class="small mb-3" style="opacity:0.85;">Quản lý tin tức và danh mục</p>
+                    <a href="/admin" class="btn btn-sm btn-light fw-bold">Vào trang Admin →</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="main-footer">
+    <div class="container">
+        <div class="footer-brand">Tin Tức <span>NTU</span></div>
+        <p class="mb-3">Hệ thống quản lý tin tức sinh viên</p>
+        <hr>
+        <small>&copy; 2024 NTU CMS — Xây dựng với Spring Boot + Thymeleaf</small>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

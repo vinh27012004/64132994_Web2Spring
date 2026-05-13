@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="admin-wrapper">
+
+    <!-- SIDEBAR -->
+    <aside class="admin-sidebar">
+        <a class="sidebar-brand" href="/admin">
+            <i class="bi bi-shield-lock me-2"></i>NTU <span>Admin</span>
+        </a>
+        <div class="nav-section">Tổng quan</div>
+        <nav class="nav flex-column">
+            <div class="nav-item">
+                <a class="nav-link active" href="/admin">
+                    <i class="bi bi-speedometer2"></i>Dashboard
+                </a>
+            </div>
+        </nav>
+        <div class="nav-section">Quản lý</div>
+        <nav class="nav flex-column">
+            <div class="nav-item">
+                <a class="nav-link" href="/admin/loaitintuc">
+                    <i class="bi bi-tags"></i>Loại tin tức
+                </a>
+            </div>
+            <div class="nav-item">
+                <a class="nav-link" href="/admin/tintuc">
+                    <i class="bi bi-newspaper"></i>Tin tức
+                </a>
+            </div>
+        </nav>
+        <div class="nav-section">Hệ thống</div>
+        <nav class="nav flex-column">
+            <div class="nav-item">
+                <a class="nav-link" href="/">
+                    <i class="bi bi-box-arrow-left"></i>Về trang chủ
+                </a>
+            </div>
+            <div class="nav-item">
+                <a class="nav-link" href="/api/tintuc" target="_blank">
+                    <i class="bi bi-code-slash"></i>REST API
+                </a>
+            </div>
+        </nav>
+    </aside>
+
+    <!-- CONTENT -->
+    <div class="admin-content">
+        <!-- TOP BAR -->
+        <div class="admin-topbar">
+            <span class="page-title"><i class="bi bi-speedometer2 me-2 text-primary"></i>Dashboard</span>
+            <a href="/" class="btn btn-sm btn-outline-secondary">
+                <i class="bi bi-box-arrow-up-right me-1"></i>Xem trang chủ
+            </a>
+        </div>
+
+        <!-- MAIN -->
+        <div class="admin-main">
+            <p class="text-muted mb-4">Xin chào! Đây là tổng quan hệ thống quản lý tin tức.</p>
+
+            <!-- STAT CARDS -->
+            <div class="row g-4 mb-5">
+                <div class="col-md-6 col-xl-3">
+                    <div class="card stat-card stat-card-blue p-4">
+                        <div class="stat-label"><i class="bi bi-newspaper me-1"></i>Tổng tin tức</div>
+                        <div class="stat-number mt-1" th:text="${soLuongTinTuc}">0</div>
+                        <i class="bi bi-newspaper stat-icon"></i>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-3">
+                    <div class="card stat-card stat-card-green p-4">
+                        <div class="stat-label"><i class="bi bi-tags me-1"></i>Loại tin tức</div>
+                        <div class="stat-number mt-1" th:text="${soLuongLoai}">0</div>
+                        <i class="bi bi-tags stat-icon"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUICK ACTIONS -->
+            <h6 class="fw-bold text-muted text-uppercase mb-3" style="font-size:0.78rem; letter-spacing:1px;">
+                Thao tác nhanh
+            </h6>
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <a href="/admin/tintuc/them" class="card text-decoration-none p-3 d-flex flex-row align-items-center gap-3"
+                       style="border-left: 4px solid #3498db !important;">
+                        <div style="background:#ebf5fb; border-radius:10px; width:48px; height:48px; display:flex; align-items:center; justify-content:center;">
+                            <i class="bi bi-plus-lg text-primary fs-5"></i>
+                        </div>
+                        <div>
+                            <div class="fw-bold text-dark small">Thêm tin tức mới</div>
+                            <div class="text-muted" style="font-size:0.8rem;">Đăng bài viết mới</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="/admin/loaitintuc/them" class="card text-decoration-none p-3 d-flex flex-row align-items-center gap-3"
+                       style="border-left: 4px solid #2ecc71 !important;">
+                        <div style="background:#eafaf1; border-radius:10px; width:48px; height:48px; display:flex; align-items:center; justify-content:center;">
+                            <i class="bi bi-tag text-success fs-5"></i>
+                        </div>
+                        <div>
+                            <div class="fw-bold text-dark small">Thêm loại tin tức</div>
+                            <div class="text-muted" style="font-size:0.8rem;">Tạo danh mục mới</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="/admin/tintuc" class="card text-decoration-none p-3 d-flex flex-row align-items-center gap-3"
+                       style="border-left: 4px solid #e74c3c !important;">
+                        <div style="background:#fdedec; border-radius:10px; width:48px; height:48px; display:flex; align-items:center; justify-content:center;">
+                            <i class="bi bi-list-ul text-danger fs-5"></i>
+                        </div>
+                        <div>
+                            <div class="fw-bold text-dark small">Danh sách tin tức</div>
+                            <div class="text-muted" style="font-size:0.8rem;">Quản lý tất cả bài viết</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
